@@ -60,6 +60,13 @@ const routes = [
     name: 'stop',
     props:true,
     component: () => import('../views/stop.vue')
+  },
+  //登陆接口
+  {
+    path:'/login',
+    name:'login',
+    props:true,
+    component:()=>import('../views/login.vue')
   }
 ]
 

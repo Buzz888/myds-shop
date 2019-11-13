@@ -65,8 +65,6 @@ export default {
           this.money = this.money + i.option * i.id.formshop.money;
         });
         this.money = this.money * 100;
-      }else{
-        this.$router.push('/')
       }
     },
     stchange(item) {

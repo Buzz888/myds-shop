@@ -1,6 +1,7 @@
 module.exports = app => {
     const express = require('express')
     const list = require('../module/list')
+    const buy = require('../module/buy')
     const router = express.Router({
         mergeParams: true //合并参数让路由里面能查找到req.params.resouce
     })
@@ -39,6 +40,11 @@ module.exports = app => {
         })
         res.send(model)
     })
+    router.get('/fahuo',async (req,res)=>{
+        const model = await buy.find()
+        res.send(model)
+    })
+    
     
     
     app.use('/api', router)

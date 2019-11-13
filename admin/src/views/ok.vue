@@ -100,6 +100,9 @@ export default {
           this.money = this.money + i.option * i.id.formshop.money;
         });
         this.money = this.money * 100;
+      }else{
+        Notify({ type: 'success', message: '请先购物' });
+        this.$router.push('/')
       }
     },
     onInput(key) {
@@ -139,7 +142,7 @@ export default {
           };
           setTimeout(async() => {
               window.console.log(this.$store.state.item)
-              const res = await this.$http.post('/fahuso',this.$store.state.item)
+              const res = await this.$http.post('/fahuo',this.$store.state.item)
             res.data.success?this.$router.push("/fahuo"):Notify({ type: "warning", message: `网络不通` });
           }, 5000);
         } else {

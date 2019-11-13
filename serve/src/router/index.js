@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import push from '../views/push.vue'
 import list from '../views/list.vue'
+import buy from '../views/buy.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -13,7 +15,8 @@ const routes = [
     children:[
       {path:'shop/push',component:push},
       {path:'shop/list',component:list},
-      {path:'shop/push/:id',component:push,props:true}
+      {path:'shop/push/:id',component:push,props:true},
+      {path:'shop/buy',component:buy,props:true}
     ]
   }
 ]

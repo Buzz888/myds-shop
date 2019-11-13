@@ -12,14 +12,13 @@
             <el-menu-item index="/shop/list">商品列表</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
-        <el-submenu index="1">
+        <el-submenu index="2">
           <template slot="title">
-            <i class="el-icon-message"></i>商品列表
+            <i class="el-icon-message"></i>用户购买信息
           </template>
           <el-menu-item-group>
-            <template slot="title">商品操作</template>
-            <el-menu-item index="/shop/push">新增商品</el-menu-item>
-            <el-menu-item index="/shop/list">商品列表</el-menu-item>
+            <template slot="title">购物车</template>
+            <el-menu-item index="/shop/buy">商品列表</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
       </el-menu>

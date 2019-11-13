@@ -1,6 +1,7 @@
 module.exports=app=>{
     const express = require('express')
     const list = require('../module/list')
+    const buy = require('../module/buy')
     const router = express.Router({
         mergeParams: true //合并参数让路由里面能查找到req.params.resouce
     })
@@ -14,9 +15,7 @@ module.exports=app=>{
         res.send(mondel)
     })
     router.post('/fahuo', async (req, res) => {
-        // console.log(req.params)
-        const mondel = req.body
-       console.log(req.body)
+        await buy.create({item:req.body,data:new Date()})
         const ok ={success:true}
         res.send(ok)
     })

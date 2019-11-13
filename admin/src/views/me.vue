@@ -3,7 +3,7 @@
     <van-nav-bar title="我的鱿鱼"></van-nav-bar>
     <div class="user">
       <div></div>
-      <div>name</div>
+      <div @click="$router.push('login')" class="user1">注册/登陆</div>
     </div>
     <div class="middle">
       <div class="middletop">
@@ -67,5 +67,9 @@
 .end {
   width: 92%;
   margin: 20px auto;
+}
+.user1{
+  color: white;
+  border-bottom: 1px solid white;
 }
 </style>
