@@ -1,2 +1,5 @@
-# myds-shop
-Vue Vue-cli node express mongoose axios Vant element-ui 
+##有鱼shop
+### Project setup
+```
+npm install
+```
