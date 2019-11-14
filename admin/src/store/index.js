@@ -5,7 +5,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     count: 0,
-    item: []
+    item: [],
+    user:null
   },
   mutations: {
     increment(state) {
@@ -29,6 +30,9 @@ const store = new Vuex.Store({
         return total + num.option
       }, 0)
 
+    },
+    getuser:(state)=>(data)=>{
+      state.user = data
     }
   }
 })

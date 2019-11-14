@@ -22,28 +22,30 @@
     <!-- 内容 -->
     <div>
       <div class="dianpu">
-        
-      <div class="pinfen" v-for="(item,i) in value" :key="i">
-        <div class="pinfenname">{{item.name}}</div>
-        <van-rate size=15 class="pinfennum" v-model="item.num" />
+        <div class="pinfen" v-for="(item,i) in value" :key="i">
+          <div class="pinfenname">{{item.name}}</div>
+          <van-rate size="15" class="pinfennum" v-model="item.num" />
+        </div>
+       
       </div>
-      </div>
+    </div> 
+    <div v-html="list.fotitle">
+      
     </div>
     <!-- 购买页面 -->
     <van-goods-action style="z-index: 2;">
       <van-goods-action-icon icon="chat-o" text="客服" />
-      <van-goods-action-icon icon="cart-o"  :info="this.$store.state.count" to='/car' text="购物车" />
+      <van-goods-action-icon icon="cart-o" :info="this.$store.state.count" to="/car" text="购物车" />
       <van-goods-action-button color="#ffd84d" @click="addshop" type="warning" text="加入购物车" />
       <van-goods-action-button color="#ffd84d" type="danger" text="立即购买" />
-      
     </van-goods-action>
   </div>
 </template>
 <script>
 import Vue from "vue";
 import router from "../router/index";
-import { Lazyload,Sku } from "vant";
-Vue.use(Lazyload,Sku);
+import { Lazyload, Sku } from "vant";
+Vue.use(Lazyload, Sku);
 export default {
   props: {
     id: {}
@@ -71,8 +73,9 @@ export default {
   methods: {
     async fetch() {
       const res = await this.$http(`/list/${this.id}`);
-      window.console.log(res.data);
+      //window.console.log(res.data);
       this.list = res.data;
+      window.console.log(this.list.fotitle)
     },
     addright() {
       router.go(-1);
@@ -80,13 +83,18 @@ export default {
     addleft() {
       router.push("/");
     },
-    addshop(){
-    this.$store.getters.getTodoById(this.list) 
-  }
+    addshop() {
+      this.$store.getters.getTodoById(this.list);
+    }
+  },
+  beforeDestroy() {
+    let option={id:this.list._id,option:this.list.option+=1}
+   this.$http.post('/option',option)
+
   },
   created() {
     this.fetch();
-  },
+  }
 };
 </script>
 <style scoped>
@@ -106,20 +114,17 @@ export default {
   width: 90%;
   margin: auto;
 }
-.pinfen{
+.pinfen {
   width: 90%;
   margin: auto;
 }
-.pinfenname{
-  font-size: .7rem;
+.pinfenname {
+  font-size: 0.7rem;
 }
-.dianpu{
+.dianpu {
   display: flex;
   align-content: center;
   width: 90%;
   margin: auto;
 }
-
-
-
 </style>

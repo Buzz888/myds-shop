@@ -16,7 +16,8 @@ const routes = [
       {path:'shop/push',component:push},
       {path:'shop/list',component:list},
       {path:'shop/push/:id',component:push,props:true},
-      {path:'shop/buy',component:buy,props:true}
+      {path:'shop/buy',component:buy,props:true},
+      {path:'shop/login',component:()=>import('../views/login.vue')}
     ]
   }
 ]

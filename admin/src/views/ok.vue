@@ -141,8 +141,10 @@ export default {
             return 1;
           };
           setTimeout(async() => {
-              window.console.log(this.$store.state.item)
-              const res = await this.$http.post('/fahuo',this.$store.state.item)
+            let data = [this.$store.state.item,this.$store.state.user,this.data]
+              const res = await this.$http.post('/fahuo',data)
+              this.$store.state.item = []
+              this.$store.state.count =0
             res.data.success?this.$router.push("/fahuo"):Notify({ type: "warning", message: `网络不通` });
           }, 5000);
         } else {
@@ -153,7 +155,11 @@ export default {
           Notify({ type: "warning", message: `密码错误你还有${index}次机会` });
         }}
         else{
-            this.$router.push("/stop");
+           
+          const res= this.$http.post('/stop',this.$store.state.user)
+           res.then(()=>{
+             this.$router.push('/stop')
+           })
         }
       }
     }

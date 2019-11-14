@@ -2,6 +2,7 @@ module.exports = app => {
     const express = require('express')
     const list = require('../module/list')
     const buy = require('../module/buy')
+    const login = require('../module/login')
     const router = express.Router({
         mergeParams: true //合并参数让路由里面能查找到req.params.resouce
     })
@@ -41,17 +42,27 @@ module.exports = app => {
         res.send(model)
     })
     router.get('/fahuo',async (req,res)=>{
+        
         const model = await buy.find()
         res.send(model)
     })
-    
+    router.get('/login',async (req,res)=>{
+        const model = await login.find()
+        res.send(model)
+    })
+    router.post('/change/:id',async (req,res)=>{
+        const model = await login.findByIdAndUpdate(req.params.id,{option:0})
+        res.send(model)
+        
+    })
+
     
     
     app.use('/api', router)
     var multer  = require('multer')
     const upload = multer({dest:__dirname + '/../../server/uploads'})
     app.post('/api/uploads',upload.single('file'),(req,res)=>{
-        
+          
         const file =req.file
         file.url = `http://localhost:3000/uploads/${file.filename}`
         res.send(file)

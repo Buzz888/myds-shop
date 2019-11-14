@@ -3,7 +3,8 @@
     <van-nav-bar title="我的鱿鱼"></van-nav-bar>
     <div class="user">
       <div></div>
-      <div @click="$router.push('login')" class="user1">注册/登陆</div>
+      <div class="user1" v-show="flag" >用户名:{{name}}</div>
+      <div v-show="!flag" @click="$router.push('login')" class="user1">注册/登陆</div>
     </div>
     <div class="middle">
       <div class="middletop">
@@ -25,6 +26,32 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data(){
+    return{
+      flag:false,
+      name:''
+    }
+  },
+  methods:{
+    async istoken(){
+      if(localStorage.token){
+        this.flag =true
+        this.name=this.$store.state.user.name
+        let token = {token:localStorage.token}
+        const res =await this.$http.post('/token',token)
+        this.$store.getters.getuser(res.data) 
+      }else{
+          this.flag=false
+      }
+    }
+  },
+  created(){
+    this.istoken()
+  }
+}
+</script>
 <style scoped>
 .top {
   width: 100%;

@@ -21,6 +21,24 @@
             <el-menu-item index="/shop/buy">商品列表</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
+        <el-submenu index="3">
+          <template slot="title">
+            <i class="el-icon-message"></i>用户信息
+          </template>
+          <el-menu-item-group>
+            <template slot="title">账户管理</template>
+            <el-menu-item index="/shop/login">账户列表</el-menu-item>
+          </el-menu-item-group>
+           <el-table-column
+      fixed="right"
+      label="操作"
+      width="100">
+      <template slot-scope="scope">
+        <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+        <el-button type="text" size="small">编辑</el-button>
+      </template>
+    </el-table-column>
+        </el-submenu>
       </el-menu>
       
     </el-aside>

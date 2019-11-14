@@ -10,7 +10,7 @@
       width="150">
     </el-table-column>
     <el-table-column
-      prop="name"
+      prop="user.name"
       label="姓名"
       width="120">
     </el-table-column>
@@ -20,12 +20,12 @@
       width="120">
     </el-table-column>
     <el-table-column
-      prop="city"
+      prop="user.username"
       label="用户名"
       width="120">
     </el-table-column>
     <el-table-column
-      prop="address"
+      prop="dizhi"
       label="地址"
       width="300">
     </el-table-column>

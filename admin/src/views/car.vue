@@ -47,6 +47,10 @@
 }
 </style>
 <script>
+import Vue from 'vue';
+import { Notify } from 'vant';
+
+Vue.use(Notify);
 export default {
   data() {
     return {
@@ -60,7 +64,7 @@ export default {
     price() {
       //window.console.log(this.$store.state.item)
       if (this.$store.state.item.length > 0) {
-        this.flag=!this.flag
+        this.flag=true
         this.$store.state.item.map(i => {
           this.money = this.money + i.option * i.id.formshop.money;
         });
@@ -89,7 +93,13 @@ export default {
     },
     onSubmit(money) {
       // window.console.log(money/100)
-      this.$router.push({ name: "ok", query: { money1: money / 100 } });
+      if(localStorage.token){
+        this.$router.push({ name: "ok", query: { money1: money / 100 } });
+      }else{
+        this.$router.push('/login')
+        Notify({ type: 'primary', message: '请先登陆' });
+      }
+      
     }
   },
   created() {
