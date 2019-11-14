@@ -1,9 +1,9 @@
-有鱼shop
+## 有鱼shop
 
 ### Project setup
-## serve为后台管理系统
-## admin为移动端展示
-## serve为node后端代码
+#### serve为后台管理系统
+#### admin为移动端展示
+#### serve为node后端代码
 ```
 npm install
 ```
